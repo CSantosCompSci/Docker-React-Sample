@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+before_install:
+  - docker build -t santos/docker-react-sample -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true santos/docker-react-sample npm run test
